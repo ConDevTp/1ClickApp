@@ -1,0 +1,101 @@
+.Slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Slider-Container {
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.Slider-Container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.Slider-Container:hover::before {
+  opacity: 0.2;
+}
+
+.Slider-Item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Slider-Button {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  z-index: 110 !important;
+  pointer-events: auto !important;
+}
+
+.prev-btn {
+  right: 10px !important;
+  left: auto !important;
+}
+
+.next-btn {
+  left: 10px !important;
+  right: auto !important;
+}
+
+.btn-slider-disable {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transform: translateY(-50%) scale(0.7);
+  transform: translateY(-50%) scale(0.7);
+}
+
+/* اصلاح لایه‌بندی برای Overlay */
+.Slider-Open {
+  position: relative;
+  z-index: 100 !important;
+  -webkit-transform: scale(1) !important;
+  transform: scale(1) !important;
+}
+
+.Slider-Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.Overlay-Active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

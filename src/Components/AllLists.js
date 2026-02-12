@@ -1,0 +1,11 @@
+import { lazy } from "react";
+
+export const HeadersList = [
+  lazy(() => import("./Headers/Header1/Header1")),
+  lazy(() => import("./Headers/Header2/Header2")),
+];
+
+export const FootersList = [
+  lazy(() => import("./Footers/Footer1/Footer1")),
+  lazy(() => import("./Footers/Footer2/Footer2")),
+];

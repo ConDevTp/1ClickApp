@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { PanelContext } from "./Context/Context";
+import { HeadersList, FootersList } from "./Components/AllLists";
+import SectionLayout from "./Components/SectionLayout";
 
-function App() {
+const App = () => {
+  const [IsPanelOpen, SetPanelOpen] = useState(false);
+
+  useEffect(() => {
+    if (IsPanelOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [IsPanelOpen]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PanelContext.Provider value={{ IsPanelOpen, SetPanelOpen }}>
+      <div
+        className={`Slider-Overlay ${IsPanelOpen ? "Overlay-Active" : ""}`}
+        onClick={() => SetPanelOpen(false)}
+      />
+
+      {/* هدرها */}
+      <SectionLayout id="Headers-Section" list={HeadersList} />
+
+      {/* فوترها */}
+      <SectionLayout id="Footers-Section" list={FootersList} />
+
+      {/* سکشن‌های بعدی فقط یک خط کد هستند */}
+      {/* <SectionLayout id="Hero-Section" list={HeroList} /> */}
+    </PanelContext.Provider>
   );
-}
+};
 
 export default App;
