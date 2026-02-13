@@ -1,0 +1,16 @@
+.Edit-Panel {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto !important;
+  height: 300px;
+  background-color: red;
+  z-index: 110;
+  transition: all 0.3s;
+}
+
+.Edit-Panel-Close {
+  height: 0px;
+  overflow: hidden;
+}

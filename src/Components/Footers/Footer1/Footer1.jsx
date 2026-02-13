@@ -1,9 +1,10 @@
-import React from "react";
-
+import { useAllData } from "../../../Hooks/useAllData";
 const Footer1 = () => {
+  const { value } = useAllData("Footer-1");
+
   return (
-    <footer>
-      <h1>Footer1</h1>
+    <footer className="bg-danger d-flex justify-content-center align-items-center flex-column p-4">
+      <h1>{value?.title || "بدون تایتل"}</h1>
     </footer>
   );
 };

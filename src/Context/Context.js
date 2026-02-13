@@ -1,6 +1,3 @@
 import { createContext } from "react";
 
-export const PanelContext = createContext({
-  IsPanelOpen: null,
-  SetPanelOpen: () => {},
-});
+export const PanelContext = createContext({});

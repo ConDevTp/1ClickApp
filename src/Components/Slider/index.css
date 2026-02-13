@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.swiper-wrapper {
+  height: auto !important;
+}
+
 .Slider-Container {
   width: 100%;
   margin: 0 auto;
@@ -98,4 +102,12 @@
 
 .no-scroll {
   overflow: hidden;
+}
+
+.swiper-slide {
+  pointer-events: none !important;
+}
+
+.swiper-slide-active {
+  pointer-events: auto !important;
 }

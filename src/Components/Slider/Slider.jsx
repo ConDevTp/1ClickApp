@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
@@ -11,9 +11,24 @@ import "./index.css";
 const Slider = ({ children, id }) => {
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
-  const { IsPanelOpen, SetPanelOpen } = useContext(PanelContext);
 
-  const isOpen = IsPanelOpen === id;
+  const { activeItem, activeSelection, updateActiveIndex } =
+    useContext(PanelContext);
+  const isOpen = activeItem?.includes(id);
+
+  const isFirstRender = useRef(true);
+
+  // خواندن ایندکس واقعی ذخیره شده
+  const savedIndex = activeSelection[id] || 0;
+
+  const handleSlideChange = (swiper) => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    // استفاده از realIndex به جای activeIndex برای حالت Loop
+    updateActiveIndex(id, swiper.realIndex);
+  };
 
   return (
     <div className="Slider mt-5">
@@ -22,21 +37,12 @@ const Slider = ({ children, id }) => {
           <FaCaretLeft />
         </SliderButton>
 
-        {!isOpen && (
-          <div
-            onClick={() => SetPanelOpen(id)}
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 50,
-              cursor: "pointer",
-            }}
-          />
-        )}
-
         <Swiper
-          modules={[Navigation]}
+          key={id}
+          initialSlide={savedIndex}
+          onSlideChange={handleSlideChange}
           loop={true}
+          modules={[Navigation]}
           autoHeight={true}
           navigation={{ prevEl, nextEl }}
           watchSlidesProgress={true}

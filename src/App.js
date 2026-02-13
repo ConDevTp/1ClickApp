@@ -1,34 +1,29 @@
-import { useEffect, useState } from "react";
 import { PanelContext } from "./Context/Context";
 import { HeadersList, FootersList } from "./Components/AllLists";
 import SectionLayout from "./Components/SectionLayout";
+import EditPanel from "./Panel/EditPanel";
+import { useSiteManager } from "./Hooks/useSiteManager";
 
 const App = () => {
-  const [IsPanelOpen, SetPanelOpen] = useState(false);
-
-  useEffect(() => {
-    if (IsPanelOpen) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [IsPanelOpen]);
+  const siteManager = useSiteManager();
 
   return (
-    <PanelContext.Provider value={{ IsPanelOpen, SetPanelOpen }}>
+    <PanelContext.Provider value={siteManager}>
       <div
-        className={`Slider-Overlay ${IsPanelOpen ? "Overlay-Active" : ""}`}
-        onClick={() => SetPanelOpen(false)}
+        className={`Slider-Overlay ${siteManager.activeItem ? "Overlay-Active" : ""}`}
+        onClick={() => siteManager.setActiveItem(null)}
       />
 
-      {/* هدرها */}
-      <SectionLayout id="Headers-Section" list={HeadersList} />
+      <SectionLayout id="Header" list={HeadersList} />
+      <SectionLayout id="Footer" list={FootersList} />
 
-      {/* فوترها */}
-      <SectionLayout id="Footers-Section" list={FootersList} />
+      <EditPanel />
 
-      {/* سکشن‌های بعدی فقط یک خط کد هستند */}
-      {/* <SectionLayout id="Hero-Section" list={HeroList} /> */}
+      {siteManager.changedSectionsCount >= 2 && (
+        <button className="reset-all-btn" onClick={siteManager.resetAllData}>
+          ریست کل سایت
+        </button>
+      )}
     </PanelContext.Provider>
   );
 };
