@@ -1,0 +1,20 @@
+.SideLeft,
+.SideRight {
+  border: none !important;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.SideLeft input,
+.SideLeft select {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.MainLayout {
+  border-left: 1px solid #bfc9d1;
+  border-right: 1px solid #bfc9d1;
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+}

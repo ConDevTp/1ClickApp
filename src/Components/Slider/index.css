@@ -47,7 +47,8 @@
   transform: translateY(-50%);
   min-width: 40px;
   min-height: 40px;
-  border: 1px solid #000;
+  border: 1px solid #bfc9d1;
+  border-radius: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,12 +58,12 @@
 }
 
 .prev-btn {
-  right: 10px !important;
+  right: 0px !important;
   left: auto !important;
 }
 
 .next-btn {
-  left: 10px !important;
+  left: 0px !important;
   right: auto !important;
 }
 

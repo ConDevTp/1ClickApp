@@ -4,6 +4,7 @@ import { lazy } from "react";
 export const HeadersList = [
   lazy(() => import("./Headers/Header1/Header1")),
   lazy(() => import("./Headers/Header2/Header2")),
+  lazy(() => import("./Headers/Header3/Header3")),
 ];
 
 export const FootersList = [
