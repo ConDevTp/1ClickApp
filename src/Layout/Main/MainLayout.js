@@ -4,12 +4,14 @@ import { HeadersList, FootersList } from "../../Components/AllLists";
 import SectionLayout from "../../Components/SectionLayout";
 import "./index.css";
 import "../Layout.css";
+import CodeExtractor from "../../Export/Templates";
 
 const MainLayout = () => {
   const { changedSectionsCount, resetAllData, activeItem, setActiveItem } =
     useContext(PanelContext);
   return (
     <main className="MainLayout position-relative px-3">
+      <CodeExtractor />
       <div
         className={`Content-Overlay ${activeItem ? "Show-Overlay" : ""}`}
         onClick={() => setActiveItem(null)}

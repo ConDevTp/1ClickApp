@@ -27,7 +27,7 @@ const Slider = ({ children, id }) => {
       isFirstRender.current = false;
       return;
     }
-    updateActiveIndex(id, swiper.realIndex);
+    updateActiveIndex(id, swiper.realIndex + 1);
   };
 
   // این افکت باعث می‌شود هر بار که محتوا تغییر کرد، ارتفاع اسلایدر آپدیت شود
