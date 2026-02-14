@@ -7,7 +7,7 @@ const SectionLayout = ({ id, list }) => {
 
   const activeItemHandler = useCallback(
     (uniqueId) => {
-      setActiveItem((prev) => (prev === uniqueId ? null : uniqueId));
+      setActiveItem(uniqueId);
     },
     [setActiveItem],
   );
@@ -22,7 +22,11 @@ const SectionLayout = ({ id, list }) => {
           <div
             key={uniqueId}
             className={`section-wrapper w-100 ${isActive ? "active-layer" : ""}`}
-            onClick={() => activeItemHandler(uniqueId)}
+            onClick={(e) => {
+              if (!isActive) {
+                activeItemHandler(uniqueId);
+              }
+            }}
           >
             <Suspense
               fallback={

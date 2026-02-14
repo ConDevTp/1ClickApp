@@ -1,10 +1,32 @@
+import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
-const Footer1 = () => {
-  const { value } = useAllData("Footer-1");
+import { FootersData } from "../../../Data/AllData"; // مسیر ایمپورت را چک کنید
+
+const Footer1 = ({ id }) => {
+  const { value } = useAllData(id);
+  const data = value || FootersData[id];
+
+  if (!data) return null;
 
   return (
-    <footer className="bg-danger d-flex justify-content-center align-items-center flex-column p-4">
-      <h1>{value?.title || "بدون تایتل"}</h1>
+    <footer
+      className="d-flex justify-content-center align-items-center flex-column"
+      style={{
+        backgroundColor: data.backgroundColor,
+        color: data.textColor,
+        padding: data.padding,
+        fontFamily: data.fontFamily,
+      }}
+    >
+      <h1
+        style={{
+          fontSize: data.fontSize,
+          fontWeight: data.fontWeight,
+          margin: 0, // حذف مارجین اضافی برای تراز بهتر
+        }}
+      >
+        {data.text}
+      </h1>
     </footer>
   );
 };

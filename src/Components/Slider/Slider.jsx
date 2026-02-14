@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
@@ -11,6 +11,7 @@ import "./index.css";
 const Slider = ({ children, id }) => {
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   const { activeItem, activeSelection, updateActiveIndex } =
     useContext(PanelContext);
@@ -26,9 +27,20 @@ const Slider = ({ children, id }) => {
       isFirstRender.current = false;
       return;
     }
-    // استفاده از realIndex به جای activeIndex برای حالت Loop
     updateActiveIndex(id, swiper.realIndex);
   };
+
+  // این افکت باعث می‌شود هر بار که محتوا تغییر کرد، ارتفاع اسلایدر آپدیت شود
+  useEffect(() => {
+    if (swiperInstance) {
+      // یک تاخیر کوتاه برای اطمینان از اعمال استایل‌ها قبل از محاسبه ارتفاع
+      const timer = setTimeout(() => {
+        swiperInstance.update();
+        swiperInstance.updateAutoHeight();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [children, swiperInstance, activeItem]);
 
   return (
     <div className="Slider mt-5">
@@ -39,6 +51,7 @@ const Slider = ({ children, id }) => {
 
         <Swiper
           key={id}
+          onSwiper={setSwiperInstance}
           initialSlide={savedIndex}
           onSlideChange={handleSlideChange}
           loop={true}

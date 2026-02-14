@@ -1,46 +1,98 @@
-import "./index.css";
+import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
+import { HeadersData } from "../../../Data/AllData";
 
-const Header2 = () => {
-  const { value } = useAllData("Header-2");
+const Header2 = ({ id }) => {
+  const { value } = useAllData(id);
+  const data = value || HeadersData[id];
 
-  const sectionStyle = {
-    backgroundColor: value?.backgroundColor || "#0dcaf0",
-    color: value?.textColor || "#ffffff",
-    padding: value?.padding || "1.5rem",
-    margin: value?.margin || "0px",
-    borderRadius: value?.borderRadius || "0px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    transition: "all 0.3s ease",
-  };
-
-  const textStyle = {
-    fontFamily: value?.fontFamily || "inherit",
-    lineHeight: value?.lineHeight || "1.2",
-    textAlign: "center",
-  };
+  if (!data) return null;
 
   return (
-    <section style={sectionStyle}>
-      <h1 style={{ ...textStyle, fontSize: value?.fontSize || "32px" }}>
-        {value?.title || "بدون تایتل"}
-      </h1>
-      <h2 style={{ ...textStyle, fontSize: "24px", opacity: 0.9 }}>
-        {value?.subtitle || "زیرعنوان"}
-      </h2>
-      <p style={{ ...textStyle, fontSize: "16px", marginTop: "10px" }}>
-        {value?.description || "توضیحات"}
-      </p>
-      <button
-        className="btn btn-danger mt-3"
-        style={{ borderRadius: value?.borderRadius || "4px" }}
-      >
-        {value?.buttonText || "کلیک کنید"}
-      </button>
-    </section>
+    <nav
+      className="navbar navbar-expand-lg navbar-light"
+      style={{
+        backgroundColor: data.backgroundColor,
+        fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
+        fontSize: data.fontSize,
+        fontWeight: data.fontWeight,
+      }}
+    >
+      <div className="container-fluid">
+        <a
+          className="navbar-brand"
+          href="#"
+          style={{
+            color: data.textColor,
+            // برندها معمولا Bold هستند، اینجا دستی کنترل می‌کنیم
+            fontWeight: data.fontWeight,
+            fontSize: `calc(${data.fontSize} + 2px)`,
+          }}
+        >
+          {data.brand}
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target={`#${id}-collapse`}
+          aria-controls={`${id}-collapse`}
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id={`${id}-collapse`}>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {data.links &&
+              Array.isArray(data.links) &&
+              data.links.map((link, index) => (
+                <li className="nav-item" key={index}>
+                  <a
+                    className={`nav-link ${link.active ? "active" : ""} ${
+                      link.disabled ? "disabled" : ""
+                    }`}
+                    href={link.url}
+                    tabIndex={link.disabled ? -1 : undefined}
+                    aria-disabled={link.disabled ? "true" : undefined}
+                    style={{
+                      color: link.disabled ? undefined : data.textColor,
+                      fontWeight: data.fontWeight, // اعمال ضخامت به لینک‌ها
+                    }}
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
+          </ul>
+          <form className="d-flex">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder={data.searchPlaceholder}
+              aria-label="Search"
+              style={{
+                fontSize: data.fontSize,
+                fontFamily: data.fontFamily,
+                fontWeight: data.fontWeight,
+              }}
+            />
+            <button
+              className="btn btn-outline-success"
+              type="submit"
+              style={{
+                fontSize: data.fontSize,
+                fontFamily: data.fontFamily,
+                fontWeight: data.fontWeight,
+              }}
+            >
+              {data.searchBtnText}
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
   );
 };
 

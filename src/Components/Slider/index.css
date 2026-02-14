@@ -5,10 +5,6 @@
   justify-content: center;
 }
 
-.swiper-wrapper {
-  height: auto !important;
-}
-
 .Slider-Container {
   width: 100%;
   margin: 0 auto;
@@ -19,6 +15,7 @@
   transform: scale(0.9);
 }
 
+/* لایه تاریک کننده */
 .Slider-Container::before {
   content: "";
   position: absolute;
@@ -30,7 +27,8 @@
   pointer-events: none;
 }
 
-.Slider-Container:hover::before {
+/* تغییر مهم: فقط زمانی که اسلایدر باز نیست (Slider-Open ندارد) هاله سیاه نشان داده شود */
+.Slider-Container:not(.Slider-Open):hover::before {
   opacity: 0.2;
 }
 
@@ -75,12 +73,13 @@
   transform: translateY(-50%) scale(0.7);
 }
 
-/* اصلاح لایه‌بندی برای Overlay */
+/* وقتی باز شد */
 .Slider-Open {
   position: relative;
   z-index: 100 !important;
   -webkit-transform: scale(1) !important;
   transform: scale(1) !important;
+  cursor: default; /* وقتی باز است نشانگر موس معمولی شود */
 }
 
 .Slider-Overlay {

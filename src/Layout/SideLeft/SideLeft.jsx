@@ -9,8 +9,15 @@ const SideLeft = () => {
   const { value, setValue, resetItem, isDirty } = useAllData(activeItem);
 
   const renderInput = (key, val) => {
+    // ۱. آی‌دی نباید ویرایش شود
     if (key === "id") return null;
 
+    // ۲. جلوگیری از کرش روی آرایه‌ها (مثل لیست لینک‌ها در هدر ۲)
+    // فعلاً آرایه‌ها و آبجکت‌ها را نادیده می‌گیریم تا پنل خراب نشود
+    if (Array.isArray(val) || (typeof val === "object" && val !== null))
+      return null;
+
+    // ۳. اینپوت‌های رنگ (متن و پس‌زمینه)
     if (key.toLowerCase().includes("color")) {
       return (
         <div key={key} className="mb-3">
@@ -27,6 +34,7 @@ const SideLeft = () => {
       );
     }
 
+    // ۴. اسلایدر ارتفاع خط
     if (key === "lineHeight") {
       return (
         <div key={key} className="mb-3">
@@ -37,15 +45,16 @@ const SideLeft = () => {
             type="range"
             className="form-range"
             min="1"
-            max="4"
+            max="3"
             step="0.1"
-            value={val || 1.2}
+            value={val || 1.5}
             onChange={(e) => setValue(key, e.target.value)}
           />
         </div>
       );
     }
 
+    // ۵. انتخاب فونت (با لیست جدید و استاندارد شما)
     if (key === "fontFamily") {
       return (
         <div key={key} className="mb-3">
@@ -54,27 +63,52 @@ const SideLeft = () => {
             className="form-select bg-dark text-white border-secondary"
             value={val}
             onChange={(e) => setValue(key, e.target.value)}
+            style={{ fontFamily: val }}
           >
-            <option value="IRANSans">ایران‌سنس</option>
-            <option value="Yekan">یکان</option>
-            <option value="Tahoma">تاهما</option>
-            <option value="Arial">Arial</option>
+            <option value="Anjoman" style={{ fontFamily: "Anjoman" }}>
+              انجمن (Anjoman)
+            </option>
+            <option value="IRANYekan" style={{ fontFamily: "IRANYekan" }}>
+              ایران یکان (IRANYekan)
+            </option>
+            <option value="IRANSansX" style={{ fontFamily: "IRANSansX" }}>
+              ایران سنس (IRANSansX)
+            </option>
+            <option value="Shabnam" style={{ fontFamily: "Shabnam" }}>
+              شبنم (Shabnam)
+            </option>
+            <option value="Vazirmatn" style={{ fontFamily: "Vazirmatn" }}>
+              وزیر متن (Vazirmatn)
+            </option>
+            <option value="Vazir" style={{ fontFamily: "Vazir" }}>
+              وزیر (Vazir)
+            </option>
+            <option value="Rokh" style={{ fontFamily: "Rokh" }}>
+              رخ (Rokh)
+            </option>
+            <option value="Tahoma" style={{ fontFamily: "Tahoma" }}>
+              تاهما (Tahoma)
+            </option>
+            <option value="Arial" style={{ fontFamily: "Arial" }}>
+              Arial
+            </option>
           </select>
         </div>
       );
     }
 
+    // ۶. اسلایدر سایز فونت
     if (key === "fontSize") {
       return (
         <div key={key} className="mb-3">
           <label className="form-label d-block small text-muted">
-            سایز فونت ({val})
+            سایز فونت ({parseInt(val)})
           </label>
           <input
             type="range"
             className="form-range"
             min="12"
-            max="100"
+            max="60"
             value={parseInt(val) || 16}
             onChange={(e) => setValue(key, e.target.value + "px")}
           />
@@ -82,9 +116,55 @@ const SideLeft = () => {
       );
     }
 
+    // ۷. اینپوت برای ارتفاع (Height) - اختیاری اگر می‌خواهید دستی تنظیم شود
+    if (key === "height") {
+      return null; // معمولاً ارتفاع اتوماتیک است، پس نشان نمی‌دهیم
+    }
+
+    // اضافه کردن تنظیم ضخامت قلم
+    if (key === "fontWeight") {
+      return (
+        <div key={key} className="mb-3">
+          <label className="form-label d-block small text-muted">
+            ضخامت قلم
+          </label>
+          <select
+            className="form-select bg-dark text-white border-secondary"
+            value={val}
+            onChange={(e) => setValue(key, e.target.value)}
+            style={{ fontWeight: val }} // پیش‌نمایش ضخامت توی خود لیست
+          >
+            <option value="300" style={{ fontWeight: 300 }}>
+              نازک (Light)
+            </option>
+            <option value="400" style={{ fontWeight: 400 }}>
+              معمولی (Regular)
+            </option>
+            <option value="700" style={{ fontWeight: 700 }}>
+              ضخیم (Bold)
+            </option>
+          </select>
+        </div>
+      );
+    }
+
+    // ۸. اینپوت‌های متنی معمولی (مثل Title, Brand, Placeholder)
     return (
       <div key={key} className="mb-3">
-        <label className="form-label d-block small text-muted">{key}</label>
+        <label className="form-label d-block small text-muted">
+          {/* ترجمه ساده لیبل‌ها */}
+          {key === "title"
+            ? "عنوان"
+            : key === "subtitle"
+              ? "زیرعنوان"
+              : key === "brand"
+                ? "نام برند"
+                : key === "searchPlaceholder"
+                  ? "متن جایگزین جستجو"
+                  : key === "searchBtnText"
+                    ? "متن دکمه جستجو"
+                    : key}
+        </label>
         <input
           type="text"
           className="form-control bg-dark text-white border-secondary"
@@ -122,7 +202,7 @@ const SideLeft = () => {
             </div>
           ) : (
             <div className="alert alert-dark small">
-              دیتایی برای این بخش تعریف نشده است.
+              دیتایی برای این بخش یافت نشد.
             </div>
           )}
         </>

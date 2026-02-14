@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AllData } from "../Components/Data/AllData";
+import { AllData } from "../Data/AllData";
 
 export const useSiteManager = () => {
   const [activeItem, setActiveItem] = useState(null);

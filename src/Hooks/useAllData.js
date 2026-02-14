@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PanelContext } from "../Context/Context";
-import { AllData } from "../Components/Data/AllData";
+import { AllData } from "../Data/AllData";
 
 export const useAllData = (id = null) => {
   const { allData, updateData, setAllData } = useContext(PanelContext);
