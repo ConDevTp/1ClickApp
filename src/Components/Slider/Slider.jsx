@@ -52,7 +52,7 @@ const Slider = ({ children, id }) => {
         <Swiper
           key={id}
           onSwiper={setSwiperInstance}
-          initialSlide={savedIndex}
+          initialSlide={savedIndex - 1}
           onSlideChange={handleSlideChange}
           loop={true}
           modules={[Navigation]}

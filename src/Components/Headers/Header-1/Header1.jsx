@@ -69,17 +69,9 @@ const Header1 = ({ id }) => {
 };
 
 export default Header1;
+
 // Code For Export
-export const Header_1 = `import React from "react";
-import { HeadersData } from "../../../Data/AllData";
-import { useAllData } from "../../../Hooks/useAllData";
-
-const Header1 = ({ id }) => {
-  const { value } = useAllData(id);
-  const data = value || HeadersData[id];
-
-  if (!data) return null;
-
+export const Header_1 = `
   return (
     <div
       className="Header-1"
@@ -138,6 +130,5 @@ const Header1 = ({ id }) => {
       </nav>
     </div>
   );
-};
 
-export default Header1;`;
+`;

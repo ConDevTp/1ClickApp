@@ -1,6 +1,6 @@
 import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
-import { FootersData } from "../../../Data/AllData"; // مسیر ایمپورت را چک کنید
+import { FootersData } from "../../../Data/AllData";
 
 const Footer1 = ({ id }) => {
   const { value } = useAllData(id);
@@ -32,3 +32,27 @@ const Footer1 = ({ id }) => {
 };
 
 export default Footer1;
+
+// Code For Export
+export const Footer_1 = `
+  return (
+    <footer
+      className="d-flex justify-content-center align-items-center flex-column"
+      style={{
+        backgroundColor: data.backgroundColor,
+        color: data.textColor,
+        padding: data.padding,
+        fontFamily: data.fontFamily,
+      }}
+    >
+      <h1
+        style={{
+          fontSize: data.fontSize,
+          fontWeight: data.fontWeight,
+          margin: 0,
+        }}
+      >
+        {data.text}
+      </h1>
+    </footer>
+  );`;

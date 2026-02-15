@@ -27,7 +27,22 @@ const SectionLayout = ({ id, list }) => {
                 activeItemHandler(uniqueId);
               }
             }}
+            style={{ position: "relative" }}
           >
+            {/* Overlay فقط روی محتوای slider و دکمه‌ها */}
+            {!isActive && (
+              <div
+                className="section-overlay"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 10, // بالاتر از محتوای اسلاید ولی پایین‌تر از trigger
+                  pointerEvents: "auto",
+                  background: "transparent", // فقط مسدود کننده کلیک
+                }}
+              />
+            )}
+
             <Suspense
               fallback={
                 <div

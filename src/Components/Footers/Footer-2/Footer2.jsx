@@ -44,3 +44,38 @@ const Footer2 = ({ id }) => {
 };
 
 export default Footer2;
+
+// Code For Export
+export const Footer_2 = `
+  return (
+    <footer
+      className="d-flex justify-content-center align-items-center flex-column"
+      style={{
+        backgroundColor: data.backgroundColor,
+        color: data.textColor,
+        padding: data.padding,
+        fontFamily: data.fontFamily,
+      }}
+    >
+      <h1
+        style={{
+          fontSize: data.fontSize,
+          fontWeight: data.fontWeight,
+          marginBottom: "10px",
+        }}
+      >
+        {data.copyrightText}
+      </h1>
+
+      <h3
+        style={{
+          fontSize: \`calc(\${data.fontSize} - 4px)\`,
+          fontWeight: data.fontWeight,
+          opacity: 0.8,
+          margin: 0,
+        }}
+      >
+        {data.brandText}
+      </h3>
+    </footer>
+  );`;
