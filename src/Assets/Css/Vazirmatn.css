@@ -1,0 +1,19 @@
+/* Vazirmatn */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../Fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../Fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../Fonts/Vazirmatn-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}

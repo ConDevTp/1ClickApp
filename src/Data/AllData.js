@@ -1,3 +1,8 @@
+const DefaultData = {
+   font: "Rokh",
+}
+
+
 export const HeadersData = {
   "Header-1": {
     id: "Header-1",
@@ -6,7 +11,7 @@ export const HeadersData = {
     textColor: "#ffffff",
     backgroundColor: "#212529",
     fontSize: "16px",
-    fontFamily: "IRANSans",
+    fontFamily: DefaultData.font,
     lineHeight: "1.5",
     height: "auto",
     fontWeight: "400",
@@ -24,7 +29,7 @@ export const HeadersData = {
     textColor: "#000000",
     backgroundColor: "#f8f9fa",
     fontSize: "16px",
-    fontFamily: "IRANSans",
+    fontFamily: DefaultData.font,
     lineHeight: "1.5",
     height: "auto",
     fontWeight: "700",
@@ -37,7 +42,7 @@ export const HeadersData = {
     textColor: "#000000",
     backgroundColor: "#f8f9fa",
     fontSize: "16px",
-    fontFamily: "IRANSans",
+    fontFamily: DefaultData.font,
     lineHeight: "1.5",
     height: "auto",
     fontWeight: "300",
@@ -47,10 +52,10 @@ export const FootersData = {
   "Footer-1": {
     id: "Footer-1",
     text: "کازینو لایو بت",
-    backgroundColor: "#dc3545", // معادل bg-danger
+    backgroundColor: "#dc3545", 
     textColor: "#ffffff",
     fontSize: "24px",
-    fontFamily: "Vazirmatn",
+    fontFamily: DefaultData.font,
     fontWeight: "700",
     padding: "24px",
   },
@@ -61,7 +66,7 @@ export const FootersData = {
     backgroundColor: "#dc3545",
     textColor: "#ffffff",
     fontSize: "20px",
-    fontFamily: "Vazirmatn",
+    fontFamily: DefaultData.font,
     fontWeight: "400",
     padding: "24px",
   },

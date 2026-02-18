@@ -4,7 +4,7 @@ import { HeadersList, FootersList } from "../../Components/AllLists";
 import SectionLayout from "../../Components/SectionLayout";
 import "./index.css";
 import "../Layout.css";
-import CodeExtractor from "../../Export/Templates";
+import CodeExtractor from "../../Export/CodeExtractor";
 
 const MainLayout = () => {
   const { changedSectionsCount, resetAllData, activeItem, setActiveItem } =
