@@ -34,6 +34,67 @@ const SideLeft = () => {
       );
     }
 
+    if (key.toLowerCase().includes("image") || key.toLowerCase().includes("img") || key.toLowerCase().includes("logo")) {
+      return (
+        <div key={key} className="mb-3">
+          <label className="form-label d-block small text-muted">
+            {key === "image" ? "تصویر" : key === "logo" ? "لوگو" : "عکس"}
+          </label>
+          
+          {val && typeof val === "string" && (
+            <div className="mb-2 text-center">
+              <img 
+                src={val} 
+                alt="preview" 
+                className="img-thumbnail bg-dark border-secondary" 
+                style={{ maxHeight: '80px', objectFit: 'contain' }}
+                onError={(e) => { e.target.style.display = 'none'; }}
+                onLoad={(e) => { e.target.style.display = 'inline-block'; }}
+              />
+            </div>
+          )}
+          
+          <input
+            type="text"
+            className="form-control form-control-sm bg-dark text-white border-secondary mb-2"
+            placeholder="لینک عکس را اینجا وارد کنید..."
+            value={typeof val === "string" && !val.startsWith("data:image") ? val : ""}
+            onChange={(e) => setValue(key, e.target.value)}
+          />
+
+<input
+  type="file"
+  accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif"
+  className="form-control form-control-sm bg-dark text-white border-secondary"
+  onChange={(e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const validTypes = ["image/jpeg", "image/png", "image/webp", "image/svg+xml", "image/gif"];
+      if (!validTypes.includes(file.type)) {
+        alert("فقط فرمت‌های JPG, PNG, WEBP, SVG و GIF مجاز هستند.");
+        e.target.value = "";
+        return;
+      }
+
+      if (file.size > 2 * 1024 * 1024) {
+        alert("حجم عکس نباید بیشتر از ۲ مگابایت باشد.");
+        e.target.value = "";
+        return;
+      }
+
+      if (typeof val === "string" && val.startsWith("blob:")) {
+        URL.revokeObjectURL(val);
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+      setValue(key, objectUrl);
+    }
+  }}
+/>
+        </div>
+      );
+    }
+
     // ۴. اسلایدر ارتفاع خط
     if (key === "lineHeight") {
       return (

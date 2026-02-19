@@ -16,36 +16,11 @@ const Footer1 = ({ id }) => {
       className="d-flex justify-content-center align-items-center flex-column footer-1"
       style={{
         backgroundColor: data.backgroundColor,
+        backgroundImage: data.backgroundImage ? `url(${data.backgroundImage})` : "none",
         color: data.textColor,
-        padding: data.padding,
+        padding: data.padding || "20px 0",
         fontFamily: data.fontFamily,
-      }}
-    >
-      <h1
-        style={{
-          fontSize: data.fontSize,
-          fontWeight: data.fontWeight,
-          margin: 0, // حذف مارجین اضافی برای تراز بهتر
-        }}
-      >
-        {data.text}
-      </h1>
-    </footer>
-  );
-};
-
-export default Footer1;
-
-// Code For Export
-export const Footer_1 = `
-  return (
-    <footer
-      className="d-flex justify-content-center align-items-center flex-column footer-1"
-      style={{
-        backgroundColor: data.backgroundColor,
-        color: data.textColor,
-        padding: data.padding,
-        fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
       }}
     >
       <h1
@@ -57,9 +32,40 @@ export const Footer_1 = `
       >
         {data.text}
       </h1>
+      {data.image1 && <img src={data.image1} alt={data.text} className="img-fluid" />}
+      {data.image2 && <img src={data.image2} alt={data.text} className="img-fluid" />}
     </footer>
-  );`;
+  );
+};
 
-  // Css Code Fro Export
-  export const Footer_1_CSS = indexCssRaw;
-  
+export default Footer1;
+
+export const Footer_1 = `
+  return (
+    <footer
+      className="d-flex justify-content-center align-items-center flex-column footer-1"
+      style={{
+        backgroundColor: data.backgroundColor,
+        backgroundImage: data.backgroundImage ? \`url(\${data.backgroundImage})\` : "none",
+        color: data.textColor,
+        padding: data.padding || "20px 0",
+        fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
+      }}
+    >
+      <h1
+        style={{
+          fontSize: data.fontSize,
+          fontWeight: data.fontWeight,
+          margin: 0,
+        }}
+      >
+        {data.text}
+      </h1>
+      {data.image1 && <img src={data.image1} alt={data.text} className="img-fluid" />}
+      {data.image2 && <img src={data.image2} alt={data.text} className="img-fluid" />}
+    </footer>
+  );
+`;
+
+export const Footer_1_CSS = indexCssRaw;

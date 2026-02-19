@@ -78,7 +78,7 @@ const Hero2 = ({ id }) => {
                 border: "2px dashed rgba(255,255,255,0.3)"
               }}
             >
-              <span>محل قرارگیری تصویر</span>
+           <img src={data.image} alt={data.title} className="img-fluid" />
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ export const Hero_2 = `
                 border: "2px dashed rgba(255,255,255,0.3)"
               }}
             >
-              <span>محل قرارگیری تصویر</span>
+           <img src={data.image} alt={data.title} className="img-fluid" />
             </div>
           </div>
         </div>

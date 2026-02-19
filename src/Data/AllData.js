@@ -1,5 +1,5 @@
 const DefaultData = {
-   font: "Rokh",
+  font: "Rokh",
 }
 
 
@@ -19,10 +19,24 @@ export const HeadersData = {
   "Header-2": {
     id: "Header-2",
     brand: "Navbar",
-    links: [
-      { text: "Home", url: "#", active: true, disabled: false },
-      { text: "Link", url: "#", active: false, disabled: false },
-      { text: "Disabled", url: "#", active: false, disabled: true },
+    links: [{
+        text: "Home",
+        url: "#",
+        active: true,
+        disabled: false
+      },
+      {
+        text: "Link",
+        url: "#",
+        active: false,
+        disabled: false
+      },
+      {
+        text: "Disabled",
+        url: "#",
+        active: false,
+        disabled: true
+      },
     ],
     searchPlaceholder: "Search",
     searchBtnText: "Search",
@@ -49,15 +63,19 @@ export const HeadersData = {
   },
 };
 export const FootersData = {
-  "Footer-1": {
+"Footer-1": {
     id: "Footer-1",
-    text: "کازینو لایو بت",
-    backgroundColor: "#dc3545", 
+    text: "متن فوتر",
+    backgroundColor: "#2c3e50",
     textColor: "#ffffff",
+    fontFamily: "IRANYekan",
     fontSize: "24px",
-    fontFamily: DefaultData.font,
+    lineHeight: "1.5",
     fontWeight: "700",
-    padding: "24px",
+    padding: "40px 0",
+    backgroundImage: "/Assets/img/bg1.png",
+    image1: "/Assets/img/bg2.png",
+    image2: "/Assets/img/bg3.png"
   },
   "Footer-2": {
     id: "Footer-2",
@@ -95,6 +113,7 @@ export const HerosData = {
     fontFamily: "Shabnam",
     fontWeight: "700",
     height: "500px",
+    image: "/Assets/img/bg1.png",
   },
 };
 export const AllData = {
