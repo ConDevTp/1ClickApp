@@ -1,6 +1,9 @@
 import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
 import { FootersData } from "../../../Data/AllData";
+import "./index.css";
+/* eslint-disable import/no-webpack-loader-syntax */
+import indexCssRaw from "!!raw-loader!./index.css";
 
 const Footer1 = ({ id }) => {
   const { value } = useAllData(id);
@@ -10,7 +13,7 @@ const Footer1 = ({ id }) => {
 
   return (
     <footer
-      className="d-flex justify-content-center align-items-center flex-column"
+      className="d-flex justify-content-center align-items-center flex-column footer-1"
       style={{
         backgroundColor: data.backgroundColor,
         color: data.textColor,
@@ -37,7 +40,7 @@ export default Footer1;
 export const Footer_1 = `
   return (
     <footer
-      className="d-flex justify-content-center align-items-center flex-column"
+      className="d-flex justify-content-center align-items-center flex-column footer-1"
       style={{
         backgroundColor: data.backgroundColor,
         color: data.textColor,
@@ -56,3 +59,7 @@ export const Footer_1 = `
       </h1>
     </footer>
   );`;
+
+  // Css Code Fro Export
+  export const Footer_1_CSS = indexCssRaw;
+  

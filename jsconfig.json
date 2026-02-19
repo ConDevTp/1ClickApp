@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "target": "es2020"
+  },
+  "exclude": ["node_modules", "build"]
+}

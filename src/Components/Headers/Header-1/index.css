@@ -1,3 +1,16 @@
-.Header1 {
-  background-color: red;
+.Header-1 {
+  text-align: center;
+  box-shadow: inset 0 0 0 20px rgb(0, 0, 255) !important;
+}
+
+.Header-1 button {
+  border: 2px solid rgb(0, 0, 255) !important;
+  padding: 5px 10px !important;
+  border-radius: 10px !important;
+  transition: all .3s;
+}
+
+.Header-1 button:hover {
+  background-color: rgb(0, 0, 255) !important;
+  color: white !important;
 }

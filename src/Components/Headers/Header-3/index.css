@@ -1,0 +1,13 @@
+.Header-3
+{
+    border: 2px solid rgb(255, 0, 0) !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
+}
+.Header-3 button
+{
+    border: 2px solid rgb(255, 0, 0) !important;
+    padding: 5px 10px !important;
+    border-radius: 10px !important;
+    margin-right: 20px !important;
+}

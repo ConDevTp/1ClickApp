@@ -1,6 +1,9 @@
 import React from "react";
 import { HeadersData } from "../../../Data/AllData";
 import { useAllData } from "../../../Hooks/useAllData";
+import "./index.css";
+/* eslint-disable import/no-webpack-loader-syntax */
+import indexCssRaw from "!!raw-loader!./index.css";
 
 const Header1 = ({ id }) => {
   const { value } = useAllData(id);
@@ -132,3 +135,5 @@ export const Header_1 = `
   );
 
 `;
+// Css Code Fro Export
+export const Header_1_CSS = indexCssRaw;

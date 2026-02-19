@@ -1,6 +1,9 @@
 import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
 import { HeadersData } from "../../../Data/AllData";
+import "./index.css";
+/* eslint-disable import/no-webpack-loader-syntax */
+import indexCssRaw from "!!raw-loader!./index.css";
 
 const Header2 = ({ id }) => {
   const { value } = useAllData(id);
@@ -10,7 +13,7 @@ const Header2 = ({ id }) => {
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light"
+      className="navbar navbar-expand-lg navbar-light Header-2"
       style={{
         backgroundColor: data.backgroundColor,
         fontFamily: data.fontFamily,
@@ -97,11 +100,13 @@ const Header2 = ({ id }) => {
 };
 
 export default Header2;
+
+
 // Code For Export
 export const Header_2 = `
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light"
+      className="navbar navbar-expand-lg navbar-light Header-2"
       style={{
         backgroundColor: data.backgroundColor,
         fontFamily: data.fontFamily,
@@ -183,3 +188,5 @@ export const Header_2 = `
     </nav>
   );
 `;
+// Css Code Fro Export
+export const Header_2_CSS = indexCssRaw;

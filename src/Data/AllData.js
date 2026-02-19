@@ -71,7 +71,34 @@ export const FootersData = {
     padding: "24px",
   },
 };
+
+export const HerosData = {
+  "Hero-1": {
+    id: "Hero-1",
+    title: "عنوان تست برای هیرو ۱ (وسط‌چین)",
+    subtitle: "این یک زیرعنوان تستی است.",
+    buttonText: "دکمه تست",
+    backgroundColor: "#4a90e2",
+    textColor: "#ffffff",
+    fontFamily: "Rokh",
+    fontWeight: "700",
+    height: "400px",
+  },
+  "Hero-2": {
+    id: "Hero-2",
+    title: "لندینگ پیج حرفه‌ای خود را بسازید (دو ستونه)",
+    description: "با استفاده از این سیستم می‌توانید در چند دقیقه سایت خود را به صورت اتوماتیک دانلود کنید.",
+    primaryButton: "شروع کنید",
+    secondaryButton: "اطلاعات بیشتر",
+    backgroundColor: "#2c3e50",
+    textColor: "#ecf0f1",
+    fontFamily: "Shabnam",
+    fontWeight: "700",
+    height: "500px",
+  },
+};
 export const AllData = {
   ...HeadersData,
   ...FootersData,
+  ...HerosData,
 };

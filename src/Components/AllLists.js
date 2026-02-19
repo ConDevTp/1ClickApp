@@ -11,3 +11,8 @@ export const FootersList = [
   lazy(() => import("./Footers/Footer-1/Footer1")),
   lazy(() => import("./Footers/Footer-2/Footer2")),
 ];
+
+export const HerosList = [
+  lazy(() => import("./Heros/Hero-1/Hero1")),
+  lazy(() => import("./Heros/Hero-2/Hero2")),
+];

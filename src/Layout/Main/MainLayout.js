@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PanelContext } from "../../Context/Context";
-import { HeadersList, FootersList } from "../../Components/AllLists";
+import { HeadersList, FootersList, HerosList } from "../../Components/AllLists";
 import SectionLayout from "../../Components/SectionLayout";
 import "./index.css";
 import "../Layout.css";
@@ -18,6 +18,7 @@ const MainLayout = () => {
       />
 
       <SectionLayout id="Header" list={HeadersList} />
+      <SectionLayout id="Hero" list={HerosList} />
       <SectionLayout id="Footer" list={FootersList} />
 
       {changedSectionsCount >= 2 && (
@@ -34,3 +35,12 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
+
+
+// For New Section 
+// First => Add Files And File
+// Second => Add Data To AllData
+// Third => Add Lazy Load In AllLists
+// Fourth => Add SectionLayout In MainLayout
+
+// You Must Do That For Every New Section You Create
