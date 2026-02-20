@@ -2,8 +2,8 @@ import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
 import { FootersData } from "../../../Data/AllData";
 import "./index.css";
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Footer1 = ({ id }) => {
   const { value } = useAllData(id);
@@ -15,8 +15,7 @@ const Footer1 = ({ id }) => {
     <footer
       className="d-flex justify-content-center align-items-center flex-column footer-1"
       style={{
-        backgroundColor: data.backgroundColor,
-        backgroundImage: data.backgroundImage ? `url(${data.backgroundImage})` : "none",
+        ...getBackgroundStyle(data),
         color: data.textColor,
         padding: data.padding || "20px 0",
         fontFamily: data.fontFamily,
@@ -45,8 +44,7 @@ export const Footer_1 = `
     <footer
       className="d-flex justify-content-center align-items-center flex-column footer-1"
       style={{
-        backgroundColor: data.backgroundColor,
-        backgroundImage: data.backgroundImage ? \`url(\${data.backgroundImage})\` : "none",
+        ...getBackgroundStyle(data),
         color: data.textColor,
         padding: data.padding || "20px 0",
         fontFamily: data.fontFamily,

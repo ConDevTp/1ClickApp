@@ -16,6 +16,7 @@ import {
 } from "./Ex_Files";
 import { AllSections } from "./AllSections";
 import { getDynamicSections } from "./DynamicImports";
+import { generateStyleHelpersFile } from "./Ex_Utils/StyleHelpersJs";
 
 const CodeExtractor = () => {
   const { activeSelection, allData } = useContext(PanelContext);
@@ -42,6 +43,7 @@ const CodeExtractor = () => {
     generateIndexJsFile(zip, fontImports);
     generatePackageJsonFile(zip);
     generateIndexHtmlFile(zip);
+    generateStyleHelpersFile(zip);
 
     const content = await zip.generateAsync({ type: "blob" });
     saveAs(content, "SourceCode.zip");

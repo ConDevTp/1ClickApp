@@ -1,30 +1,24 @@
 import React from "react";
-// توجه: این فایل HerosData رو هنوز نداری، ولی فرض می‌کنیم که سیستم می‌سازدش
 import { HerosData } from "../../../Data/AllData";
 import { useAllData } from "../../../Hooks/useAllData";
 import "./index.css";
-
-// برای استخراج CSS
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Hero1 = ({ id }) => {
-  // اتصال به سیستم دیتا و هوک
   const { value } = useAllData(id);
-  // اگر دیتای زنده (هوک) نبود، از دیتای استاتیک استفاده کن
   const data = value || HerosData[id];
 
-  // اگر دیتا هنوز لود نشده بود، چیزی نشون نده (یا لودینگ نشون بده)
   if (!data) return null;
 
   return (
     <section
       className="hero-1 d-flex align-items-center text-center"
       style={{
-        // استفاده از دیتا برای استایل‌ها
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
-        fontFamily: data.fontFamily, // خیلی مهم برای سیستم فونت
+        fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
         minHeight: data.height || "400px",
         padding: "60px 0",
       }}
@@ -66,19 +60,15 @@ const Hero1 = ({ id }) => {
 
 export default Hero1;
 
-// =====================================================================
-// بخش‌های مورد نیاز برای سیستم خروجی اتوماتیک (DynamicImports)
-// =====================================================================
-
-// Code For Export (کد JSX خام برای فایل زیپ)
 export const Hero_1 = `
   return (
     <section
       className="hero-1 d-flex align-items-center text-center"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
         fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
         minHeight: data.height || "400px",
         padding: "60px 0",
       }}
@@ -118,5 +108,4 @@ export const Hero_1 = `
   );
 `;
 
-// Css Code For Export (کد CSS خام برای فایل زیپ)
 export const Hero_1_CSS = indexCssRaw;

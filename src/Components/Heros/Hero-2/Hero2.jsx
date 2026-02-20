@@ -2,9 +2,8 @@ import React from "react";
 import { HerosData } from "../../../Data/AllData";
 import { useAllData } from "../../../Hooks/useAllData";
 import "./index.css";
-
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Hero2 = ({ id }) => {
   const { value } = useAllData(id);
@@ -16,16 +15,16 @@ const Hero2 = ({ id }) => {
     <section
       className="hero-2 d-flex align-items-center"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
         fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
         minHeight: data.height || "500px",
         padding: "80px 0",
       }}
     >
       <div className="container">
         <div className="row align-items-center">
-          {/* ستون متن‌ها */}
           <div className="col-lg-6 text-start mb-5 mb-lg-0">
             <h1
               className="fw-bold mb-3"
@@ -64,7 +63,6 @@ const Hero2 = ({ id }) => {
               )}
             </div>
           </div>
-          {/* ستون عکس یا باکس گرافیکی */}
           <div className="col-lg-6">
             <div 
               className="rounded shadow-lg"
@@ -89,16 +87,15 @@ const Hero2 = ({ id }) => {
 
 export default Hero2;
 
-// =====================================================================
-
 export const Hero_2 = `
   return (
     <section
       className="hero-2 d-flex align-items-center"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
         fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
         minHeight: data.height || "500px",
         padding: "80px 0",
       }}

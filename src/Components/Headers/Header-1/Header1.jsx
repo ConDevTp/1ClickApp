@@ -2,8 +2,8 @@ import React from "react";
 import { HeadersData } from "../../../Data/AllData";
 import { useAllData } from "../../../Hooks/useAllData";
 import "./index.css";
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Header1 = ({ id }) => {
   const { value } = useAllData(id);
@@ -24,7 +24,7 @@ const Header1 = ({ id }) => {
         <div
           className="p-4"
           style={{
-            backgroundColor: data.backgroundColor,
+            ...getBackgroundStyle(data),
             color: data.textColor,
           }}
         >
@@ -51,7 +51,7 @@ const Header1 = ({ id }) => {
       </div>
       <nav
         className="navbar navbar-dark"
-        style={{ backgroundColor: data.backgroundColor }}
+        style={{ ...getBackgroundStyle(data) }}
       >
         <div className="container-fluid">
           <button
@@ -73,7 +73,6 @@ const Header1 = ({ id }) => {
 
 export default Header1;
 
-// Code For Export
 export const Header_1 = `
   return (
     <div
@@ -88,7 +87,7 @@ export const Header_1 = `
         <div
           className="p-4"
           style={{
-            backgroundColor: data.backgroundColor,
+            ...getBackgroundStyle(data),
             color: data.textColor,
           }}
         >
@@ -115,7 +114,7 @@ export const Header_1 = `
       </div>
       <nav
         className="navbar navbar-dark"
-        style={{ backgroundColor: data.backgroundColor }}
+        style={{ ...getBackgroundStyle(data) }}
       >
         <div className="container-fluid">
           <button
@@ -133,7 +132,6 @@ export const Header_1 = `
       </nav>
     </div>
   );
-
 `;
-// Css Code Fro Export
+
 export const Header_1_CSS = indexCssRaw;

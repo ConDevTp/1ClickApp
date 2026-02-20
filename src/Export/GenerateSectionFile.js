@@ -7,7 +7,7 @@ const GenerateSectionFile = (sectionName, componentsArray, zip, activeSelection)
 
   // Build the final React component code string
   const cssImportLine = css ? `import "./index.css";\n` : "";
-  const beforeCode = `import React from "react";\nimport { AllData } from "../../Data/AllData";\n${cssImportLine}const ${sectionName} = ({ id }) => {\n  const data = AllData[id];\n  if (!data) return null;`;
+  const beforeCode = `import React from "react";\nimport { AllData } from "../../Data/AllData";\nimport { getBackgroundStyle } from "../../Utils/styleHelpers";\n${cssImportLine}const ${sectionName} = ({ id }) => {\n  const data = AllData[id];\n  if (!data) return null;`;
   const afterCode = `}; export default ${sectionName};`;
   const finalCode = beforeCode + code + afterCode;
 

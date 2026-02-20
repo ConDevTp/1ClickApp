@@ -2,8 +2,8 @@ import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
 import { HeadersData } from "../../../Data/AllData";
 import "./index.css";
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Header2 = ({ id }) => {
   const { value } = useAllData(id);
@@ -15,7 +15,7 @@ const Header2 = ({ id }) => {
     <nav
       className="navbar navbar-expand-lg navbar-light Header-2"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         fontFamily: data.fontFamily,
         lineHeight: data.lineHeight,
         fontSize: data.fontSize,
@@ -28,7 +28,6 @@ const Header2 = ({ id }) => {
           href="#"
           style={{
             color: data.textColor,
-            // برندها معمولا Bold هستند، اینجا دستی کنترل می‌کنیم
             fontWeight: data.fontWeight,
             fontSize: `calc(${data.fontSize} + 2px)`,
           }}
@@ -61,7 +60,7 @@ const Header2 = ({ id }) => {
                     aria-disabled={link.disabled ? "true" : undefined}
                     style={{
                       color: link.disabled ? undefined : data.textColor,
-                      fontWeight: data.fontWeight, // اعمال ضخامت به لینک‌ها
+                      fontWeight: data.fontWeight,
                     }}
                   >
                     {link.text}
@@ -101,14 +100,12 @@ const Header2 = ({ id }) => {
 
 export default Header2;
 
-
-// Code For Export
 export const Header_2 = `
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light Header-2"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         fontFamily: data.fontFamily,
         lineHeight: data.lineHeight,
         fontSize: data.fontSize,
@@ -188,5 +185,5 @@ export const Header_2 = `
     </nav>
   );
 `;
-// Css Code Fro Export
+
 export const Header_2_CSS = indexCssRaw;

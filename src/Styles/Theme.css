@@ -1,0 +1,17 @@
+:root {
+  --ui-accent: #007aff;
+  --ui-bg-main: #ffffff;
+  --ui-bg-sub: #f9fafb;
+  --ui-border: #e5e7eb;
+  --ui-text-title: #111827;
+  --ui-text-body: #4b5563;
+  --ui-text-muted: #9ca3af;
+  --ui-danger: #ef4444;
+  --ui-radius: 4px;
+  --ui-height: 32px;
+  --ui-font-size: 12px;
+  --ui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ui-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --ui-focus-ring: 0 0 0 2px rgba(0, 122, 255, 0.2);
+  --ui-transition: all 0.2s ease-in-out;
+}

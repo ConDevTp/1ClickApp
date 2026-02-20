@@ -2,8 +2,8 @@ import React from "react";
 import { useAllData } from "../../../Hooks/useAllData";
 import { FootersData } from "../../../Data/AllData";
 import "./index.css";
-/* eslint-disable import/no-webpack-loader-syntax */
 import indexCssRaw from "!!raw-loader!./index.css";
+import { getBackgroundStyle } from "../../../Utils/styleHelpers";
 
 const Footer2 = ({ id }) => {
   const { value } = useAllData(id);
@@ -15,15 +15,16 @@ const Footer2 = ({ id }) => {
     <footer
       className="d-flex justify-content-center align-items-center flex-column footer-2"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
         padding: data.padding,  
         fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
       }}
     >
       <h1
         style={{
-          fontSize: data.fontSize, // سایز اصلی برای متن کپی‌رایت
+          fontSize: data.fontSize,
           fontWeight: data.fontWeight,
           marginBottom: "10px",
         }}
@@ -33,10 +34,9 @@ const Footer2 = ({ id }) => {
 
       <h3
         style={{
-          // سایز برند را کمی کوچکتر یا بزرگتر از سایز اصلی در نظر می‌گیریم
           fontSize: `calc(${data.fontSize} - 4px)`,
           fontWeight: data.fontWeight,
-          opacity: 0.8, // کمی کمرنگ‌تر برای زیبایی
+          opacity: 0.8,
           margin: 0,
         }}
       >
@@ -48,16 +48,16 @@ const Footer2 = ({ id }) => {
 
 export default Footer2;
 
-// Code For Export
 export const Footer_2 = `
   return (
     <footer
       className="d-flex justify-content-center align-items-center flex-column footer-2"
       style={{
-        backgroundColor: data.backgroundColor,
+        ...getBackgroundStyle(data),
         color: data.textColor,
         padding: data.padding,
         fontFamily: data.fontFamily,
+        lineHeight: data.lineHeight,
       }}
     >
       <h1
@@ -81,8 +81,7 @@ export const Footer_2 = `
         {data.brandText}
       </h3>
     </footer>
-  );`;
+  );
+`;
 
-    // Css Code Fro Export
-    export const Footer_2_CSS = indexCssRaw;
-    
+export const Footer_2_CSS = indexCssRaw;
