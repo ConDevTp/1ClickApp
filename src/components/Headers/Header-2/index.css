@@ -1,0 +1,9 @@
+.Header-2
+{
+    border: 2px solid black !important;
+}.Header-2 button
+{
+    padding: 5px 10px !important;
+    border-radius: 10px !important;
+    margin-right: 20px !important;
+}

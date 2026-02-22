@@ -1,0 +1,15 @@
+.hero-2 >*
+{
+    text-align: right !important;
+    text-align-last: right !important;
+}
+
+.hero-2
+{
+    border-radius: 20px !important;
+    padding: 50px !important;
+}
+
+.hero-2 img{
+    height: 100% !important;
+}

@@ -4,8 +4,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: none !important;
-  box-shadow: none !important;
+  /* outline: none !important; */
+  /* box-shadow: none !important; */
 }
 
 html,
